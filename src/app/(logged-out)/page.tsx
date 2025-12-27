@@ -16,7 +16,7 @@ export default function LandingPage() {
         </Button>
         <small>or</small>
         <Button asChild className="cursor-pointer" variant="outline">
-          <Link href="sign-up">Sing up</Link>
+          <Link href="sign-up">Sign up</Link>
         </Button>
       </div>
     </>
