@@ -1,5 +1,6 @@
 'use client';
 
+import { PasswordInput } from '@/components/password-input';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -19,24 +20,28 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { formSchema, LoginSchemaType } from '@/validations/login-schema';
+import { loginSchema, LoginSchemaType } from '@/validations/auth-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PersonStandingIcon } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 export default function LoginPage() {
+  const router = useRouter();
   //! React Hook Form
   const form = useForm<LoginSchemaType>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
     },
   });
 
-  const handleSubmit = (values: LoginSchemaType) => {
+  const handleSubmit = (data: LoginSchemaType) => {
     console.log('Login Validation passed');
+    console.log(data);
+    router.push('/dashboard');
   };
 
   return (
@@ -76,7 +81,7 @@ export default function LoginPage() {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input type="password" placeholder="Password" {...field} />
+                      <PasswordInput placeholder="••••••••" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
