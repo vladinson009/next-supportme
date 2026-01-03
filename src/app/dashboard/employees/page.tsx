@@ -1,5 +1,8 @@
+import { DataTable } from '@/components/data-table';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Employee } from '@/types/Employee';
 import { setTimeout } from 'timers/promises';
+import { columns } from './columns';
 
 export default async function EmployeesPage() {
   await setTimeout(5000);
@@ -74,8 +77,13 @@ export default async function EmployeesPage() {
   ];
 
   return (
-    <div>
-      <h2>Employees Page</h2>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Employees</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <DataTable data={employees} columns={columns} />
+      </CardContent>
+    </Card>
   );
 }
