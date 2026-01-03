@@ -1,8 +1,14 @@
+import { Metadata } from 'next';
 import LightDarkToggle from '@/components/light-dark-toggle';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { PropsWithChildren } from 'react';
 type Props = PropsWithChildren & {};
+
+export const metadata: Metadata = {
+  title: 'SupportMe',
+  description: 'Made with love by Vladimir',
+};
 
 export default function LoggedOutLayout({ children }: Props) {
   return (
